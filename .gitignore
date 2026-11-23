@@ -1,0 +1,37 @@
+# Environment variables — NEVER commit these
+.env
+.env.local
+.env.production
+
+# SQLite dev database
+prisma/dev.db
+prisma/*.db-journal
+prisma/*.db-wal
+prisma/*.db-shm
+
+# Dependencies
+node_modules/
+.local/
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# NLP model cache (downloaded at runtime)
+.cache/
+
+# Backup / scratch files — never commit these
+*.bak
+*.orig
+
+# Deployment artifacts
+.vercel/
+.render/

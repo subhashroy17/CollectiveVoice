@@ -1,0 +1,68 @@
+{
+  "name": "collectivevoice-web-app",
+  "version": "1.0.0",
+  "description": "Live Q&A, meeting moderation, voting, and reporting.",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node -r dotenv/config backend/server.js",
+    "backend": "node -r dotenv/config backend/server.js",
+    "dev": "node scripts/dev-local.js",
+    "build": "npx prisma generate",
+    "test": "node scripts/test.js",
+    "test:api": "node scripts/test.js --testPathPattern=api",
+    "test:auth": "node scripts/test.js --testPathPattern=auth",
+    "test:nlp": "node scripts/test.js --testPathPattern=nlp",
+    "test:nlp:semantic": "node scripts/test.js --semantic --testPathPattern=nlp",
+    "test:db": "node scripts/test.js --testPathPattern=db",
+    "test:clustering": "node scripts/test.js --testPathPattern=clustering",
+    "test:clustering:integration": "node scripts/test.js --semantic --testPathPattern=clustering",
+    "test:e2e": "node scripts/test.js --testPathPattern=clustering.e2e",
+    "test:e2e:integration": "node scripts/test.js --semantic --testPathPattern=clustering.e2e",
+    "test:watch": "node scripts/test.js --watch",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "node prisma/seed.js",
+    "db:studio": "prisma studio",
+    "db:reset": "prisma migrate reset --force",
+    "db:local": "node scripts/local-db.js",
+    "db:seed:local": "node scripts/seed-local.js",
+    "check": "node scripts/check.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "collectivevoice",
+    "qna",
+    "meetings"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
+    "@prisma/adapter-neon": "^5.22.0",
+    "@prisma/client": "^5.22.0",
+    "@xenova/transformers": "^2.17.2",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^16.6.1",
+    "jsonwebtoken": "^9.0.3",
+    "jsqr": "1.4.0",
+    "nodemailer": "^9.0.5",
+    "prisma": "^5.22.0",
+    "qrcode": "^1.5.4",
+    "ws": "^8.21.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "supertest": "^6.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testTimeout": 15000,
+    "setupFiles": [
+      "./backend/tests/setup.js"
+    ],
+    "testMatch": [
+      "<rootDir>/backend/tests/**/*.test.js"
+    ]
+  }
+}
